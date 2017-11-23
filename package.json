@@ -18,6 +18,9 @@
   },
   "devDependencies": {
     "@types/jest": "^21.1.8",
+    "@types/react": "^16.0.25",
+    "@types/react-native": "^0.50.7",
+    "@types/react-test-renderer": "^16.0.0",
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
     "concurrently": "^3.5.1",
