@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "watch": "npm run build -- -w",
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
+    "test": "jest --coverage",
     "start:ios": "npm run build && concurrently -r 'npm run watch' 'react-native run-ios'"
   },
   "dependencies": {
@@ -18,8 +18,6 @@
   },
   "devDependencies": {
     "@types/jest": "^21.1.8",
-    "@types/react": "^16.0.25",
-    "@types/react-native": "^0.50.7",
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
     "concurrently": "^3.5.1",
@@ -31,6 +29,17 @@
     "typescript": "^2.6.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testRegex": "artifacts/.+\\.(test|spec).js$",
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "artifacts/**/*.js",
+      "!artifacts/**/*.spec.js",
+      "!artifacts/**/*.index.js"
+    ]
   }
 }
