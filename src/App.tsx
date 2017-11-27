@@ -9,18 +9,17 @@ import React from 'react'
 import Grid from 'react-native-grid-component'
 
 export interface MyAppProps {
-  
 }
 
-export interface MyAppState { 
+export interface MyAppState {
   items: string[]
 }
 
-export default class ReactPrototype extends React.Component<MyAppProps, MyAppState> {
+export default class ReactPrototype extends React.Component<MyAppState, MyAppState> {
 
   constructor(props) {
     super(props)
-    this.state = { items: ['red', 'green', 'yellow'] }
+    this.state = { items: props.items }
   }
 
   _renderItem = (data, i) => <View style={[{backgroundColor: data}, styles.item]} key={i}/>

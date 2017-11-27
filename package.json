@@ -11,7 +11,7 @@
     "lint": "tslint src/**/*.ts",
     "test": "jest --coverage",
     "start:ios": "npm run build && concurrently -r 'npm run watch' 'react-native run-ios'",
-    "start:treel": "npm run build && concurrently -r 'npm run watch' 'react-native run-ios --project-path \"../\"'"
+    "postinstall": "sed -i '' 's\/#import <fishhook\\/fishhook.h>\/#import \"fishhook.h\"/' ./node_modules/react-native/Libraries/WebSocket/RCTReconnectingWebSocket.m"
   },
   "dependencies": {
     "react": "16.0.0",
