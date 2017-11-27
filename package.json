@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "react": "16.0.0",
-    "react-native": "0.50.3"
+    "react-native": "0.50.3",
+    "react-native-grid-component": "^1.0.7"
   },
   "devDependencies": {
     "@types/jest": "^21.1.8",

@@ -4,52 +4,46 @@
  * @flow
  */
 
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
+import Grid from 'react-native-grid-component'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-})
+export interface MyAppProps {
+  
+}
 
-export interface MyAppProps { }
-export interface MyAppState { }
+export interface MyAppState { 
+  items: string[]
+}
 
 export default class ReactPrototype extends React.Component<MyAppProps, MyAppState> {
+
+  constructor(props) {
+    super(props)
+    this.state = { items: ['red', 'green', 'yellow'] }
+  }
+
+  _renderItem = (data, i) => <View style={[{backgroundColor: data}, styles.item]} key={i}/>
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.tsx
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <Grid
+      style={styles.list}
+      renderItem={this._renderItem}
+      data={this.state.items}
+      itemsPerRow={2}
+      />
     )
   }
 }
 
-const styles: any = StyleSheet.create({
-  container: {
+const styles = StyleSheet.create({
+  item: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    height: 160,
+    margin: 1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
+  list: {
+    flex: 1
   }
 })
